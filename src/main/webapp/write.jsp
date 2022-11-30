@@ -4,6 +4,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bbs.Bbs" %>
 <%@ page import="bbs.BbsDAO" %>
+<%@ page import="subject.Subject" %>
+<%@ page import="subject.SubjectDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,23 +121,10 @@ background-color: #F0FFFF ;
 </head>
 <body>
 	<%
+		int SubID = 0;
 		String userID = null;
 		if (session.getAttribute("userID") != null) {
 			userID = (String) session.getAttribute("userID");
-			
-			int bbsID = 0;
-			if(request.getParameter("bbsID")!=null){ //매개변수로 넘어온 bbsID가 존재한다면
-				bbsID = Integer.parseInt(request.getParameter("bbsID")); //현재 파일 변수 bbsID에 bbsID 넣어주기
-			}
-			if(bbsID == 0){
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("alert('유효하지 않은 글입니다.')");
-				script.println("location.href = 'bbs.jsp'"); 
-				script.println("</script>");
-			}
-			//코드 4줄의 import bbs.Bbs 덕에 쓸 수 있는 
-			Bbs bbs = new BbsDAO().getBbs(bbsID); //유효한 글이라면 Bbs라는 인스턴스 안에 내용 담기
 		}
 	%>
 
@@ -206,16 +195,133 @@ background-color: #F0FFFF ;
 						<td><input type="text" class="form-control" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
 					</tr>
 					<tr>
+	  					<td>
+	  						<div style="float:left;">
+	  						글 분류 : 
+	  							<select name="topic">
+						          <option>글 분류 선택</option>
+						          <option value="질문">질문</option>
+						          <option value="과제">과제</option>
+						          <option value="팀 구해요">팀 구해요</option>
+						          <option value="수다">수다</option>
+							     </select>
+	  						</div>
+	  					</td>
+	  				</tr>
+	  				<!-- Subject로 넘겨줄 칼럼값 선택 -->
+	  				<tr>
+	  					<td>
+		  					<div style="float:left;">
+		  					과목 : 
+							  <form name="Subject_Select" method="post" action = "bbs.jsp">
+							        <select id="Grade" onchange="optionChange();">
+							          <option>학년 선택</option>
+							          <option value="1">1학년</option>
+							          <option value="2">2학년</option>
+							          <option value="3">3학년</option>
+							          <option value="4">4학년</option>
+							        </select>
+							        <select name="Subject_write" id="Subject">
+							          <option>과목 선택</option>
+							        </select>
+							     </form>
+							         <%
+							       SubjectDAO subjectDAO = new SubjectDAO();
+							       ArrayList<Subject> sublist = subjectDAO.getList();
+							    %>
+							     
+							        <script>
+							      function optionChange() {//옵션 바꾸는 함수
+							        //1학년 일때
+							        var a = ["1학년 과목 선택"];
+							        <%
+							        for(int i=0; i<sublist.size(); i++) {
+							           if(sublist.get(i).getGrade()==1){
+							           %>
+							           a.push("<%= sublist.get(i).getSubName() %> - <%= sublist.get(i).getProfessor() %>");
+							           <%
+							           }}
+							           %>
+							        var b = ["2학년 과목 선택"];
+							        <%
+							        for(int i=0; i<sublist.size(); i++) {
+							           if(sublist.get(i).getGrade()==2){
+							           %>
+							           b.push("<%= sublist.get(i).getSubName() %> - <%= sublist.get(i).getProfessor() %>");
+							           <%
+							           }}
+							           %>
+							        var c = ["3학년 과목 선택"];
+							        <%
+							        for(int i=0; i<sublist.size(); i++) {
+							           if(sublist.get(i).getGrade()==3){
+							           %>
+							           c.push("<%= sublist.get(i).getSubName() %> - <%= sublist.get(i).getProfessor() %>");
+							           <%
+							           }}
+							           %>
+							        var d = ["4학년 과목 선택"];
+							        <%
+							        for(int i=0; i<sublist.size(); i++) {
+							           if(sublist.get(i).getGrade()==4){
+							           %>
+							           d.push("<%= sublist.get(i).getSubName() %> - <%= sublist.get(i).getProfessor() %>");
+							           <%
+							           }}
+							           %>
+							        var v = $( '#Grade' ).val(); //학년 value 저장
+							        var o;
+							        if ( v == '1' ) {
+							          o = a;
+							        } else if ( v == '2' ) {
+							          o = b;
+							        } else if ( v == '3' ) {
+							          o = c;
+							        } else if ( v == '4') {
+							           o = d;
+							        } else {
+							           o = [];
+							        }
+							           $( '#Subject' ).empty();
+							           for ( var i = 0; i < o.length; i++ ) {
+							                 
+							        	   if(v=='1'){
+							                   var ID = String(i);
+							                   $( '#Subject' ).append( '<option value='+ID+'>' + o[ i ] + '</option>' );
+							                   
+							                 }
+							                 if(v=='2'){
+							                    
+							                    var ID = String(i+a.length);
+							                    $( '#Subject' ).append( '<option value='+ID+'>' + o[ i ] + '</option>' );
+							                }
+							                 if(v=='3'){
+							                    var ID = String(i+a.length+b.length);
+							                
+							                    $( '#Subject' ).append( '<option value='+ID+'>' + o[ i ] + '</option>' );
+							                                          }
+							                 if(v=='4'){
+							                    var ID = String(i+a.length+b.length+c.length);
+							                 
+							                    $( '#Subject' ).append( '<option value='+ID+'>' + o[ i ] + '</option>' );
+							                    }
+							
+							           }
+							      }
+							    </script>
+							  </div>
+	  					</td>
+	  				</tr>
+					<tr>
 				
 						<td><textarea class="form-control" placeholder="글 내용" name="bbsContent" maxlength="2048" style="height: 350px;"></textarea></td>
 					</tr>
 				</tbody>
 			</table>
 			
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" style="color: black; background-color: #FFFFE0; font-family: 'Jua', sans-serif;">
+				<input type="submit" class="btn btn-primary pull-right" value="글쓰기" style="color: black; background-color: #FFFFE0; font-family: 'Jua', sans-serif; font-size:17px;">
 			</form>
 		</div>
-	
 	</div>
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

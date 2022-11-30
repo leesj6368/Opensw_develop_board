@@ -23,6 +23,7 @@ font-family: 'Gothic A1', sans-serif;
     background-color: #F0FFFF ;
     border-color: #B0C4DE ;
     font-size : 17px;
+    padding:20px;
 }
 /* title */
 .navbar-default .navbar-brand {
@@ -30,6 +31,9 @@ font-family: 'Gothic A1', sans-serif;
     font-family: 'Jua', sans-serif;
     font-size : 20px;
     color: #4169E1;
+    padding-top :10px;
+    padding-bottom : 10px;
+    padding-right: 30px;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -39,10 +43,14 @@ font-family: 'Gothic A1', sans-serif;
 .navbar-default .navbar-nav > li > a {
     color: #000080;
     font-family: 'Jua', sans-serif;
+    padding-top :10px;
+    padding-bottom : 10px;
+    padding-right: 20px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: #333;
+    padding:10px;
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
@@ -50,12 +58,14 @@ font-family: 'Gothic A1', sans-serif;
     color: #000080;
     background-color: #B0E0E6; //메뉴바 선택했을때
     font-family: 'Jua', sans-serif;
+    padding:10px;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
     color: #000080;
     background-color: #B0E0E6; 
+    padding:10px;
 }
 /* caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {
