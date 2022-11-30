@@ -9,10 +9,121 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1" >  <!-- 반응형 웹에 사용하는 메타태그 -->
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 참조  -->
+<link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/custom.css">
-<title>충북대 소프트웨어학과 과목별 게시판</title>
+<title>소프트웨어학과 과목별 게시판</title>
 <style type = "text/css">
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+select {
+  /* 생략 */
+  font-family: "Noto Sansf KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #444;
+  background-color: #fff;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+body {
+background-color: #F0FFFF ;
+}
+th {
+font-family: 'Gothic A1', sans-serif;
+}
+td {
+font-family: 'Gothic A1', sans-serif;
+}
+/* navbar */
+.navbar-default {
+    background-color: #F0FFFF ;
+    border-color: #B0C4DE ;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #000080;
+    font-family: 'Jua', sans-serif;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #000080;
+    font-family: 'Jua', sans-serif;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #000080;
+    background-color: #B0E0E6; //메뉴바 선택했을때
+    font-family: 'Jua', sans-serif;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #000080;
+    background-color: #B0E0E6; 
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+.dropdown-menu {
+	color: #000080;
+	background-color: #B0E0E6;
+	font-family: 'Jua', sans-serif; 
+}
+.dropdown-toggle {
+	background-color:  #F0FFFF; 
+}
+.table table-striped{
+	background-color: #ffffff;
+}
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color:  #000080;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
 </style>
 </head>
 <body>
@@ -37,7 +148,7 @@
                 <span class ="icon-bar"></span>
                 <span class ="icon-bar"></span>
             </button>
-            <a class ="navbar-brand" href="main.jsp">충북대 소프트웨어학과 과목별 게시판</a>
+            <a class ="navbar-brand" href="main.jsp">소프트웨어학과 과목별 게시판</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -78,18 +189,19 @@
             %>
         </div>
     </nav>
-    <div class="container">
-        
+     
+  
+    </script>
         <div class="row">
             <table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
                 <thead>
                 	
                     <tr>
                 
-                        <th style="background-color:#eeeeee; text-align:center;">번호</th>
-                        <th style="background-color:#eeeeee; text-align:center;">제목</th>
-                        <th style="background-color:#eeeeee; text-align:center;">작성자</th>
-                        <th style="background-color:#eeeeee; text-align:center;">작성일</th>
+                        <th style="text-align:center;">번호</th>
+                        <th style="text-align:center;">제목</th>
+                        <th style="text-align:center;">작성자</th>
+                        <th style="text-align:center;">작성일</th>
                     </tr>
                 </thead>
                
@@ -101,11 +213,11 @@
                 	for(int i = 0; i < list.size(); i++)
                     {
                 %>
-                    <tr>
-                        <td><%=list.get(i).getBbsID() %></td>
-                        <td><a href="view.jsp?bbsID=<%=list.get(i).getBbsID()%>"><%=list.get(i).getBbsTitle() %></a></td>
-                        <td><%=list.get(i).getUserID() %></td>
-                        <td><%=list.get(i).getBbsDate().substring(0,11) + list.get(i).getBbsDate().substring(11, 13) + "시" 
+                    <tr> 
+                        <td style="font-family: 'Gothic A1', sans-serif;"><%=list.get(i).getBbsID() %></td>
+                        <td style="font-family: 'Gothic A1', sans-serif;"><a href="view.jsp?bbsID=<%=list.get(i).getBbsID()%>" style="color:#000000; text-decoration:none;" ><%=list.get(i).getBbsTitle() %></a></td>
+                        <td style="font-family: 'Gothic A1', sans-serif;"><%=list.get(i).getUserID() %></td>
+                        <td style="font-family: 'Gothic A1', sans-serif;"><%=list.get(i).getBbsDate().substring(0,11) + list.get(i).getBbsDate().substring(11, 13) + "시" 
                         + list.get(i).getBbsDate().substring(14,16) + "분" %></td>
                     </tr>
                 <%
@@ -113,26 +225,13 @@
                 %>
                 </tbody>
             </table>
-            <%
-            	
-                if(pageNumber != 1) {
-            %>
-            	
-                <a href="bbs.jsp?pageNumber=<%=pageNumber - 1 %>" class="btn btn-success btn-arrow-left">이전</a>
-            <%
-            	
-                } if (bbsDAO.nextPage(pageNumber + 1)) {
-            %>
-            	
-                <a href="bbs.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-left">다음</a>
-            <%
-                }
-            %>
-          
-            <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+      
+            
+            <a href="write.jsp" class="btn btn-primary pull-right" style="color: black; background-color: #FFFFE0; font-family: 'Jua', sans-serif;">글쓰기</a>
+			
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+  <script src="js/bootstrap.js"></script>
 </body>
 </html>

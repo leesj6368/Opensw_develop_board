@@ -9,10 +9,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css">
-<title>충북대 소프트웨어학과 과목별 게시판</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale="1" >  <!-- 반응형 웹에 사용하는 메타태그 -->
+<link rel="stylesheet" href="css/bootstrap.css"> <!-- 참조  -->
+<link rel="stylesheet" href="css/custom.css">
+<title>소프트웨어학과 과목별 게시판</title>
+<style type = "text/css">
+</style>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+ @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+//드롭다운
+select {
+  /* 생략 */
+  font-family: "Noto Sansf KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444;
+  background-color: #fff;
+
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+body {
+background-color: #F0FFFF ;
+}
+th {
+font-family: 'Gothic A1', sans-serif;
+}
+td {
+font-family: 'Gothic A1', sans-serif;
+}
+/* navbar */
+.navbar-default {
+    background-color: #F0FFFF ;
+    border-color: #B0C4DE ;
+    font-size : 17px;
+}
+/* title */
+.navbar-default .navbar-brand {
+    color: #000080;
+    font-family: 'Jua', sans-serif;
+    font-size : 20px;
+    color: #4169E1;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #5E5E5E;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #000080;
+    font-family: 'Jua', sans-serif;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #000080;
+    background-color: #B0E0E6; //메뉴바 선택했을때
+    font-family: 'Jua', sans-serif;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #000080;
+    background-color: #B0E0E6; 
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+.navbar-default .navbar-nav > .open > a .caret, 
+.navbar-default .navbar-nav > .open > a:hover .caret, 
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: #000080;
+    border-bottom-color: #000080;
+}
+/* mobile version */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+.dropdown-menu {
+	color: #000080;
+	background-color: #B0E0E6;
+	font-family: 'Jua', sans-serif; 
+}
+.dropdown-toggle {
+	background-color:  #F0FFFF; 
+}
+.table-striped{
+	background-color: #FFFFFF;
+	border-color:#1E90FF;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color:  #000080;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+</style>
 </head>
 <body>
 	<% 
@@ -45,18 +169,19 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="main.jsp">충북대 소프트웨어학과 과목별 게시판</a>
+			<a class="navbar-brand" href="main.jsp">소프트웨어학과 과목별 게시판</a>
 		</div>
 		
-		<%
-			if(userID==null){
-		
-		%>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="main.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
+				<li><a href="main.jsp">메인</a></li>
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
 			</ul>
+			
+			<%
+				if(userID==null){
+			
+			%>
 			<ul class="nav navbar-nav navbar-right">
          		<li class="dropdown">
            			<a href="#" class="dropdown-toggle" 
@@ -93,7 +218,7 @@
 			<table class="table table-striped" style="text-align:center; border :1px solid #dddddd" > <%-- 홀,짝 행 구분 --%>
 				<thead>
 					<tr>
-						<th colspan="3" style="background-color : #eeeeeee; text-align:center;">게시판 글 보기</th>
+						<th colspan="2" style="background-color : #eeeeeee; text-align:center; font-family: 'Gothic A1', sans-serif;">게시판 글 보기</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -113,34 +238,30 @@
 						<td >내용</td>	
 						<td colspan="2" style="min-height:200px; text-align:left;"><%= bbs.getBbsContent().replaceAll(" ", "&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>;") %></td>
 					</tr>
-					
-					
 				</tbody>
-			
-			
 			</form>
 			<br>
-			<a href="bbs.jsp" class="btn btn-primary">목록</a>
-			
+			<a href="bbs.jsp" class="btn btn-primary" style="color: black; background-color: #B0E0E6; font-family: 'Jua', sans-serif; font-size:15px;">목록</a>
+			  
 			<%
 				if(userID!=null && userID.equals(bbs.getUserID())){
 			%>
-				<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">수정</a>
-				<a onclick="return confirm('정말로 삭제하시겠습니까?')" 
-				href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary">삭제</a>
+				<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn-primary" style="color: black; background-color: #B0E0E6; font-family: 'Jua', sans-serif; font-size:15px;">수정</a>
+				<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary" style="color: black; background-color: #B0E0E6; font-family: 'Jua', sans-serif; font-size:15px;">삭제</a>
 			
 			<%
 			} 
 			%>
 		
-		
-	<div class="container">
+		<div style="height:30px;"></div>
+		<div class="container">
 				<div class="row">
 					<table class="table table-striped"
 						style="text-align: center; border: 1px solid #dddddd">
 						<tbody>
 							<tr>
-								<td align="left" bgcolor="skyblue">댓글</td>
+								<td align="left" style="color: black; background-color: #B0E0E6; font-family: 'Jua', sans-serif; font-size:20px;" >댓글</td>
+								
 							</tr>
 							<tr>
 								<%
@@ -161,7 +282,7 @@
 													<td align="right"><a
 														onclick="return confirm('정말로 삭제하시겠습니까?')"
 														href="replyDeleteAction.jsp?bbsID=<%=bbsID%>&replyID=<%=list.get(i).getReplyID()%>"
-														class="btn btn-danger">삭제</a></td>
+														class="btn btn-danger" style="color: black; background-color: #FF6347 ; font-family: 'Jua', sans-serif; font-size:15px;"">삭제</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -185,20 +306,20 @@
 									<td align="left"><%=userID%></td>
 								</tr>
 								<tr>
-									<td><input type="text" class="form-control"
-										placeholder="댓글 쓰기" name="replyContent" maxlength="300"></td>
+									<td><input type="text" class="form-control" 
+										placeholder="댓글쓰기" name="replyContent" maxlength="500"></td>
 								</tr>
 							</tbody>
 						</table>
-						<input type="submit" class="btn btn-success pull-right"
-							value="댓글 쓰기">
+						<input type="submit" class="btn btn-success pull-right" style="color:black; background-color:#98FB98 ; font-family: 'Jua', sans-serif; font-size:15px;"
+							value="댓글쓰기">
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
 </body>
 </html>
