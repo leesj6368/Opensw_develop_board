@@ -22,6 +22,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 //드롭다운
 select {
   /* 생략 */
@@ -29,13 +30,10 @@ select {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-
   color: #444;
   background-color: #fff;
-
   padding: 0.6em 1.4em 0.5em 0.8em;
   margin: 0;
-
   border: 1px solid #aaa;
   border-radius: 0.5em;
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
@@ -104,7 +102,6 @@ font-family: 'Gothic A1', sans-serif;
     border-top-color: #000080;
     border-bottom-color: #000080;
 }
-
 /* mobile version */
 .navbar-default .navbar-toggle {
     border-color: #DDD;
@@ -128,7 +125,6 @@ font-family: 'Gothic A1', sans-serif;
 	background-color: #FFFFFF;
 	border-color:#1E90FF;
 }
-
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color:  #000080;
@@ -256,10 +252,10 @@ font-family: 'Gothic A1', sans-serif;
 			%>
 		
 		<div style="height:30px;"></div>
-		<div class="container">
+  		<div class="container">
 				<div class="row">
 					<table class="table table-striped"
-						style="text-align: center; border: 1px solid #AFEEEE">
+						style="text-align: center; border: 1px solid #dddddd">
 						<tbody>
 							<tr>
 								<td align="left" style="color: black; background-color: #B0E0E6; font-family: 'Jua', sans-serif; font-size:20px;" >댓글</td>
@@ -268,8 +264,8 @@ font-family: 'Gothic A1', sans-serif;
 							<tr>
 								<%
 									ReplyDAO replyDAO = new ReplyDAO();
-									ArrayList<Reply> list = replyDAO.getList(bbsID);
-									for (int i = 0; i < list.size(); i++) {
+									ArrayList<Reply> list2 = replyDAO.getList(bbsID);
+									for (int i = 0; i < list2.size(); i++) {
 								%>
 								<div class="container">
 									<div class="row">
@@ -277,13 +273,14 @@ font-family: 'Gothic A1', sans-serif;
 											style="text-align: center; border: 1px solid #dddddd">
 											<tbody>
 												<tr>
-													<td align="left"><%=list.get(i).getUserID()%></td>	
+													<td align="left" style="width:100%;"><%=list2.get(i).getUserID()%></td>	
 												</tr>
 												<tr>
-													<td align="left"><%=list.get(i).getReplyContent()%></td>
+													<td align="left"><%=list2.get(i).getReplyContent()%></td>
+													<!-- 댓글 삭제 버튼 -->
 													<td align="right"><a
 														onclick="return confirm('정말로 삭제하시겠습니까?')"
-														href="replyDeleteAction.jsp?bbsID=<%=bbsID%>&replyID=<%=list.get(i).getReplyID()%>"
+														href="replyDeleteAction.jsp?bbsID=<%=bbsID%>&replyID=<%=list2.get(i).getReplyID()%>"
 														class="btn btn-danger" style="color: black; background-color: #FF6347 ; font-family: 'Jua', sans-serif; font-size:15px;"">삭제</a></td>
 												</tr>
 											</tbody>

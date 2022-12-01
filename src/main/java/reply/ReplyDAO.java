@@ -13,10 +13,10 @@ public class ReplyDAO {
 	
 	public ReplyDAO() {
 		try {
-			String dbURL="jdbc:mysql://localhost:3306/BBS?serverTimezone=Asia/Seoul&useSSL=false";	
+			String dbURL="jdbc:mysql://localhost:3306/BBS?useSSL=false&user=root&password=1234";	
 			String dbID="root";
 			String dbPassword="7979"; //!!!!!사람마다 비번다름!!!!
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			conn=DriverManager.getConnection(dbURL,dbID,dbPassword);
 		
 		} catch (Exception e) {
@@ -142,4 +142,3 @@ public class ReplyDAO {
 		return "";//데이터베이스 오류
 	}
 }
-

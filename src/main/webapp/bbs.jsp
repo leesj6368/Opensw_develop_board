@@ -22,7 +22,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
 select {
   /* 생략 */
   font-family: "Noto Sansf KR", sans-serif;
@@ -42,9 +42,11 @@ background-color: #F0FFFF ;
 }
 th {
 font-family: 'Gothic A1', sans-serif;
+font-size : 20px;
 }
 td {
-font-family: 'Gothic A1', sans-serif;
+font-family: 'Nanum Gothic Coding', monospace;
+font-size : 17px;
 }
 /* navbar */
 .navbar-default {
@@ -53,7 +55,6 @@ font-family: 'Gothic A1', sans-serif;
     font-size : 20px;
     padding:20px;
 }
-
 /* title */
 .navbar-default .navbar-brand {
     color: #000080;
@@ -86,13 +87,14 @@ font-family: 'Gothic A1', sans-serif;
     color: #000080;
     background-color: #B0E0E6; //메뉴바 선택했을때
     font-family: 'Jua', sans-serif;
-	
+	padding:10px;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
     color: #000080;
     background-color: #B0E0E6; 
+    padding:10px;
 	
 }
 /* caret */
@@ -119,21 +121,19 @@ font-family: 'Gothic A1', sans-serif;
     width: 100%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
+    background-color: #FFFAFA; 
+   
+   
   }
   th, td {
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #00BFFF;
     padding: 10px;
     text-align: center;
+    height: 45px;
   }
   thead tr {
     background-color:#00BFFF;
     color: #ffffff;
-  }
-  tbody tr:nth-child(2n) {
-    background-color: #E0FFFF;
-  }
-  tbody tr:nth-child(2n+1) {
-    background-color: #F0FFFF ;
   }
 /* mobile version */
 .navbar-default .navbar-toggle {
@@ -154,7 +154,6 @@ font-family: 'Gothic A1', sans-serif;
 .dropdown-toggle {
 	background-color:  #F0FFFF; 
 }
-
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color:  #000080;
@@ -231,7 +230,7 @@ font-family: 'Gothic A1', sans-serif;
         </div>
     </nav>
     <!-- 과목 선택 -->
-  <div style="height:30px;"></div>
+  <div style="height:20px;"></div>
   <div class = "container">
   <form style ="display:inline;"  name="Subject_Select" method="post" action = "bbs.jsp">
         <select id="Grade" onchange="optionChange();">
@@ -244,15 +243,16 @@ font-family: 'Gothic A1', sans-serif;
         <select name="Subject_bbs" id="Subject">
           <option>과목 선택</option>
         </select>
-     <input type="submit" value="확인">
+     <input type="submit" value="확인" style="font-size:15px; background-color:#FA8072; border-color:#FA8072; border-radius:5px;">
      </form>
+   
      <div id="ClassTime" style ="display:inline;"class="pull-right" >???</div>
      <div style ="display:inline; font-family: 'Jua', sans-serif; font-size:18px;" class="pull-right">수업시간 및 강의실 : </div>
          <%
        SubjectDAO subjectDAO = new SubjectDAO();
        ArrayList<Subject> sublist = subjectDAO.getList();
     %>
-     
+    
         <script>
       function optionChange() {//옵션 바꾸는 함수
         //1학년 일때
@@ -328,7 +328,6 @@ font-family: 'Gothic A1', sans-serif;
                  
                     $( '#Subject' ).append( '<option value='+ID+'>' + o[ i ] + '</option>' );
                     }
-
            }
       }
       function optionChange2() {//옵션 바꾸는 함수
@@ -352,10 +351,10 @@ font-family: 'Gothic A1', sans-serif;
   %>
   </div>
   
-     
+        <div style="height:15px;"></div>
  <div class ="container">
         <div class="row">
-            <table class="table" style="text-align:center; border:1px solid #dddddd">
+            <table class="table" style="text-align:center; border:1.7px solid  #F0FFFF;">
                 <thead>
                     <tr>
                         <th style="text-align:center;">번호</th>

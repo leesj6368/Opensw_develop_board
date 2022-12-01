@@ -50,7 +50,6 @@ font-family: 'Gothic A1', sans-serif;
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     color: #333;
-    padding:10px;
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
@@ -58,14 +57,12 @@ font-family: 'Gothic A1', sans-serif;
     color: #000080;
     background-color: #B0E0E6; //메뉴바 선택했을때
     font-family: 'Jua', sans-serif;
-    padding:10px;
 }
 .navbar-default .navbar-nav > .open > a, 
 .navbar-default .navbar-nav > .open > a:hover, 
 .navbar-default .navbar-nav > .open > a:focus {
     color: #000080;
     background-color: #B0E0E6; 
-    padding:10px;
 }
 /* caret */
 .navbar-default .navbar-nav > .dropdown > a .caret {

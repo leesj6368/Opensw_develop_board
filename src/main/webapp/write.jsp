@@ -16,11 +16,12 @@
 <title>소프트웨어학과 과목별 게시판</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
- @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
 select {
   /* 생략 */
   font-family: "Noto Sansf KR", sans-serif;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.5;
   color: #444;
@@ -38,11 +39,14 @@ background-color: #F0FFFF ;
 .navbar-default {
     background-color: #F0FFFF ;
     border-color: #B0C4DE ;
+    font-size : 17px;
 }
 /* title */
 .navbar-default .navbar-brand {
     color: #000080;
     font-family: 'Jua', sans-serif;
+    font-size : 20px;
+    color: #4169E1;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
@@ -179,10 +183,11 @@ background-color: #F0FFFF ;
 	<div class="container"> 
 		<div class = "row">
 			<form method="post" action="writeAction.jsp">
-			<table class="table table-striped" style="text-align:center; border:1px solid #dddddd"> 
+			<table class="table table-striped" style="text-align:center; border:1.5px solid #87CEFA;"> 
 				<thead>
+				 <div style="height:30px;"></div>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+						<th colspan="2" style="background-color: #FFF8DC; font-family: 'Noto Sans KR', sans-serif; font-size:17px; text-align: center;">게시판 글쓰기 양식</th>
 					</tr>
 				</thead>
 				<tbody>
